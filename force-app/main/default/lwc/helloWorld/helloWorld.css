@@ -1,0 +1,9 @@
+.character-list {
+    /* background: #ccc; */
+    /* #f3f2f2 */
+    /* background: linear-gradient(#ddd, #e8e8e8); */
+    background: linear-gradient(#f3f2f2, #e8e8e8);
+	height: auto;
+    margin: 1rem;
+    border-radius: 1rem;
+}

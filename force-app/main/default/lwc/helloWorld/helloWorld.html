@@ -1,0 +1,50 @@
+<template>
+    <c-marvel-service oncharacters={handleCharacters}>
+        <lightning-card title="Characters">
+            <pre class="slds-p-around_medium">Total Characters: {showTotal}</pre>
+            <lightning-layout horizontal-align="center">
+                <lightning-layout-item padding="around-large">
+                    <c-marvel-pagination
+                        onshowfirst={handleFirst}
+                        onshownext={handleNext}
+                        onshowprev={handlePrev}
+                        onshowlast={handleLast}
+                        page={showPage}
+                        total={showTotal}
+                        page-size={showPageSize}>
+                    </c-marvel-pagination>
+                </lightning-layout-item>
+            </lightning-layout>
+
+
+            <div class="character-list">
+                <lightning-layout horizontal-align="center" multiple-rows="true">
+                    <template if:true={isLoading}>
+                        <div class="exampleHolder">
+                            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+                        </div>
+                    </template>
+                    <template if:false={isLoading} for:each={characterList} for:item="character">
+                        <lightning-layout-item padding="around-small" key={character.id}>
+                            <c-marvel-thumbnail character={character}></c-marvel-thumbnail>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </div>
+
+            <lightning-layout horizontal-align="center">
+                <lightning-layout-item padding="around-large">
+                    <c-marvel-pagination
+                        onshowfirst={handleFirst}
+                        onshownext={handleNext}
+                        onshowprev={handlePrev}
+                        onshowlast={handleLast}
+                        page={showPage}
+                        total={showTotal}
+                        page-size={showPageSize}>
+                    </c-marvel-pagination>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-card>
+    </c-marvel-service>
+</template>
